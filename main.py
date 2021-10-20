@@ -22,6 +22,8 @@ def afis_partint(lista):
         rez.append(int(i))
     return rez
 
+def test_afis_partint():
+    assert afis_partint([1.5, -3.3, 8, 9.8, 3.2]) == ([1, -3, 8, 9, 3])
 
 
 #3
@@ -39,6 +41,8 @@ def interval_deschis(lista,capat1,capat2):
             rez.append(i)
     return rez
 
+def test_interval_deschis():
+    assert interval_deschis([1.5, -3.3, 8, 9.8, 3.2] , -4 , 5) == ([1.5, -3.3, 3.2])
 
 #4
 def parte_frac(n):
@@ -48,6 +52,7 @@ def parte_frac(n):
     :return: partea frac a unui numar
     """
     return str(n).split('.')[1]
+
 
 def partfrac_partint(lista):
     """
@@ -66,8 +71,48 @@ def partfrac_partint(lista):
 
 
 
-
 #5
+def transformare(lista):
+    """
+    returneaza
+    :param lista:
+    :return:
+    """
+    rez = []
+    p ='\0'
+    for i in lista:
+        n= str(i)
+        for j in n:
+            if j== '-':
+                p=p+"minus"
+            elif j== '0':
+                p=p+"zero"
+            elif j == '1':
+                p = p + "unu"
+            elif j == '2':
+                p = p + "doi"
+            elif j == '3':
+                p = p + "trei"
+            elif j == '4':
+                p = p + "patru"
+            elif j == '5':
+                p = p + "cinci"
+            elif j == '6':
+                p = p + "sase"
+            elif j == '7':
+                p = p + "sapte"
+            elif j == '8':
+                p = p + "opt"
+            elif j == '9':
+                p = p + "noua"
+            else:
+                j== '.'
+                p= p+ "virgula"
+        rez.append(p)
+        p='\0'
+    return rez
+
+
 
 
 
@@ -80,16 +125,18 @@ def main():
         print("2.Afisaza partea intreaga din fiecare numar")
         print("3.Afiseaza elementele care apartin unui interval deschis")
         print("4.Afiseaza elementele care care au partea intreaga divizor al partii fractionare ")
-        print("5.")
+        print("5.Transformarea in stringuri a numerelor")
         print("x. Iesire")
         optiune = input(" Dati optiunea: ")
         if optiune == '1':
             lista = citire_lista()
         elif optiune == '2':
+            test_afis_partint()
             rez = []
             rez = afis_partint(lista)
             print (rez)
         elif optiune == '3':
+            test_interval_deschis()
             capat1 = float(input(" capatul inferior"))
             capat2 = float(input(" capatul superior"))
             rez = []
@@ -100,7 +147,9 @@ def main():
             rez = partfrac_partint(lista)
             print(rez)
         elif optiune == '5':
-            pass
+            rez = []
+            rez = transformare(lista)
+            print(rez)
         elif optiune == 'x':
             break
         else:
