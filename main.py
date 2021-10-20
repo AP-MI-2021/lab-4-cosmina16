@@ -41,6 +41,28 @@ def interval_deschis(lista,capat1,capat2):
 
 
 #4
+def parte_frac(n):
+    """
+    returneaza partea fractionara a unui numar
+    :param n: un numar float
+    :return: partea frac a unui numar
+    """
+    return str(n).split('.')[1]
+
+def partfrac_partint(lista):
+    """
+    returneaza o lista care contine doar numerele a caror parte intreaga este divizor al partii fractionare
+    :param lista: o lista de numere float
+    :return: elementele care au partea intreaga divizor al partii fractionare
+    """
+    rez = []
+    for i in lista:
+        n = int(parte_frac(i))
+        z = int(i)
+        if n%z==0 and z!= 0:
+            rez.append(i)
+    return rez
+
 
 
 
@@ -56,7 +78,9 @@ def main():
     while True:
         print("1.Citire date")
         print("2.Afisaza partea intreaga din fiecare numar")
-        print("3. ")
+        print("3.Afiseaza elementele care apartin unui interval deschis")
+        print("4.Afiseaza elementele care care au partea intreaga divizor al partii fractionare ")
+        print("5.")
         print("x. Iesire")
         optiune = input(" Dati optiunea: ")
         if optiune == '1':
@@ -72,7 +96,9 @@ def main():
             rez =interval_deschis(lista,capat1,capat2)
             print(rez)
         elif optiune == '4':
-            pass
+            rez = []
+            rez = partfrac_partint(lista)
+            print(rez)
         elif optiune == '5':
             pass
         elif optiune == 'x':
